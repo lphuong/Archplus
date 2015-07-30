@@ -1,0 +1,20 @@
+<?php
+/**
+ * Created by PHUONGLQ-SOFTPLUS.
+ * User: Admin
+ * Date: 7/24/2015
+ * Time: 11:03 PM
+ */
+session_start();
+
+if (!isset($_SESSION['user'])) {
+    header("Location: ../index.php");
+} else if (isset($_SESSION['user']) != "") {
+    header("Location: ../admin.php");
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['user']);
+    header("Location: ../index.php");
+}
